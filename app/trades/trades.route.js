@@ -7,7 +7,7 @@ function tradesConfig($routeProvider) {
     $routeProvider.when('/trades', {
         templateUrl: 'trades/trades.html',
         controller: 'TradesController',
-        controllerAs: 'vm',
+        controllerAs: 'vm'
 
     });
 }

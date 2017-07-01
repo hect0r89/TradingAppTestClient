@@ -1,7 +1,9 @@
+<!--Page header-->
 <div class="page-header">
     <h2>Booked Trades</h2>
 </div>
 
+<!--New trade button-->
 <div class="row">
     <div class="col-sm-2 col-sm-offset-10">
         <a class="form-control btn btn-primary" href="#/new-trade">New Trade</a>
@@ -12,6 +14,7 @@
     <div class="col-sm-12">
         <div class="container">
             <table class="table">
+                <!--Table headers-->
                 <thead>
                 <tr>
                     <th>Sell CCY</th>
@@ -22,6 +25,7 @@
                     <th>Date Booked</th>
                 </tr>
                 </thead>
+                <!--Table body-->
                 <tbody>
                 <tr ng-repeat="trade in vm.trades">
                     <td>{{ trade.sell_currency }}</td>

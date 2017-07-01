@@ -17,11 +17,17 @@ function TradesController(tradeservice) {
         });
     }
 
+    /**
+     * Gets the existents trades in the server
+     */
     function getTrades() {
         return tradeservice.getTrades()
             .then(getTradesSuccess);
     }
 
+    /**
+     * If the get trades request is successful saves the data.
+     */
     function getTradesSuccess(data){
         vm.trades = data;
     }

@@ -11,6 +11,9 @@ function fixerservice($http) {
         postTrade: postTrade
     };
 
+    /**
+     * Obtains the foreign exchange data
+     */
     function getForeignExchange() {
         return $http.get('http://api.fixer.io/latest')
             .then(getForeignExchangeComplete)
@@ -21,10 +24,15 @@ function fixerservice($http) {
         }
 
         function getForeignExchangeFailed(error) {
-            console.log('XHR Failed for getAvengers.' + error.data);
+            console.log('Error ' + error.data);
         }
     }
 
+    /**
+     * Obtains the rate between two symbols
+     * @param sellSymbol
+     * @param buySymbol
+     */
     function getRate(sellSymbol, buySymbol){
         return $http.get('http://api.fixer.io/latest?base='+sellSymbol+'&symbols='+buySymbol)
             .then(getRateComplete)
@@ -35,10 +43,17 @@ function fixerservice($http) {
         }
 
         function getRateFailed(error) {
-            console.log('XHR Failed for getAvengers.' + error.data);
+            console.log('Error ' + error.data);
         }
     }
 
+    /**
+     * Creates a trade with the data selected
+     * @param sell_currency
+     * @param sell_amount
+     * @param buy_currency
+     * @param rate
+     */
     function postTrade(sell_currency, sell_amount, buy_currency, rate) {
         var data = {
             sell_currency: sell_currency,
@@ -56,7 +71,7 @@ function fixerservice($http) {
         }
 
         function postTradeFailed(error) {
-            console.log('XHR Failed for getAvengers.' + error.data);
+            console.log('Error ' + error.data);
         }
     }
 

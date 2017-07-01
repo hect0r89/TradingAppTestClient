@@ -1,8 +1,11 @@
+<!--Page header-->
 <div class="page-header" >
     <h2>New Trades</h2>
 </div>
 
+
 <div class="container">
+    <!--First row headers-->
     <div class="row" align="center">
         <div class="col-sm-3">
           <span>Sell Currency</span>
@@ -17,6 +20,7 @@
         </div>
     </div>
 
+    <!--First row elements-->
     <div class="row" align="center">
         <div class="col-sm-3">
             <select class="form-control" id="select_sell" ng-options=" symbol for symbol in vm.symbols"
@@ -39,6 +43,7 @@
         </div>
     </div>
 
+    <!--Second row headers-->
     <div class="row" align="center">
         <div class="col-sm-3">
             <span>Sell Amount</span>
@@ -49,6 +54,7 @@
         </div>
     </div>
 
+    <!--Second row elements-->
     <div class="row">
         <div class="col-sm-3">
             <input class="form-control" type="text" ng-model="vm.sellAmount" ng-change="vm.changeSellAmount()">
@@ -58,6 +64,7 @@
         </div>
     </div>
 
+    <!--Buttons-->
     <div class="row">
         <div class="col-sm-1">
             <button class="form-control btn btn-primary" ng-click="vm.createTrade()" >Create</button>

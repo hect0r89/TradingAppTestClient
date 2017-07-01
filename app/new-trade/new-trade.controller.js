@@ -21,17 +21,22 @@ function NewTradeController(fixerservice) {
 
     activate();
 
+
     function activate() {
-        getForeignExchange().then(function() {
-            console.log('Activated ForeignExchange View');
-        });
+        getForeignExchange().then(function() {});
     }
 
+    /**
+     * Method that requests ForeignExchanges
+     */
     function getForeignExchange() {
         return fixerservice.getForeignExchange()
             .then(getForeignExchangeSuccess);
     }
 
+    /**
+     * If foreign exchange request is successful it saves the symbos availables.
+     */
     function getForeignExchangeSuccess(data){
         vm.symbols.push(data.base);
         _.forEach(data.rates, function(k, rate) {
@@ -39,6 +44,9 @@ function NewTradeController(fixerservice) {
         });
     }
 
+    /**
+     * Execute when event OnChange is triggered. Gets rate for two symbols.
+     */
     function changeSymbol() {
         if(vm.selectedSellSymbol && vm.selectedBuySymbol){
             fixerservice.getRate(vm.selectedSellSymbol, vm.selectedBuySymbol)
@@ -46,19 +54,27 @@ function NewTradeController(fixerservice) {
         }
     }
 
+    /**
+     * If rate request is successful calculates the buy amount.
+     */
     function getRateSuccess(data){
         vm.rate = data.rates[vm.selectedBuySymbol];
-        console.log(vm.sellAmount);
-        console.log(vm.rate);
         vm.buyAmount = vm.sellAmount * vm.rate;
     }
 
+    /**
+     * Execute when event OnChange is triggered. Calculates the buy amount.
+     */
     function changeSellAmount() {
         if(vm.selectedSellSymbol && vm.selectedBuySymbol){
             vm.buyAmount = vm.sellAmount * vm.rate;
         }
     }
 
+
+    /**
+     * Method that creates a trade with the data selected.
+     */
     function createTrade() {
         if(vm.selectedSellSymbol && vm.selectedBuySymbol && vm.sellAmount > 0.0 && vm.rate){
             fixerservice.postTrade(vm.selectedSellSymbol, vm.sellAmount, vm.selectedBuySymbol, vm.rate)
@@ -74,6 +90,9 @@ function NewTradeController(fixerservice) {
         }
     }
 
+    /**
+     * If the create trade request is successful shows a confirm modal.
+     */
     function postTradeSuccess(data){
         swal("Ok","Trade created correctly.", "success")
     }

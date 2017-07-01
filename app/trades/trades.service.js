@@ -9,6 +9,9 @@ function tradeservice($http) {
         getTrades: getTrades
     };
 
+    /**
+     * Obtains the trades from the server
+     */
     function getTrades() {
         return $http.get('/api/1.0/trades/')
             .then(getTradesComplete)
@@ -19,7 +22,7 @@ function tradeservice($http) {
         }
 
         function getTradesFailed(error) {
-            console.log('XHR Failed for getAvengers.' + error.data);
+            console.log('Error ' + error.data);
         }
     }
 }
