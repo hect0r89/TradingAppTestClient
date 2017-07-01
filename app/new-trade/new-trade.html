@@ -1,0 +1,70 @@
+<div class="page-header" >
+    <h2>New Trades</h2>
+</div>
+
+<div class="container">
+    <div class="row" align="center">
+        <div class="col-sm-3">
+          <span>Sell Currency</span>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-1">
+            <span>Rate</span>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <span>Buy Currency</span>
+        </div>
+    </div>
+
+    <div class="row" align="center">
+        <div class="col-sm-3">
+            <select class="form-control" id="select_sell" ng-options=" symbol for symbol in vm.symbols"
+                    ng-model="vm.selectedSellSymbol"
+                    ng-change="vm.changeSymbol()"></select>
+        </div>
+        <div class="col-sm-1">
+            <span class="glyphicon glyphicon-arrow-right"></span>
+        </div>
+        <div class="col-sm-4">
+            <span>{{vm.rate}}</span>
+        </div>
+        <div class="col-sm-1">
+            <span class="glyphicon glyphicon-arrow-right"></span>
+        </div>
+        <div class="col-sm-3">
+            <select class="form-control" id="select_buy" ng-options=" symbol for symbol in vm.symbols"
+                    ng-model="vm.selectedBuySymbol"
+                    ng-change="vm.changeSymbol()"></select>
+        </div>
+    </div>
+
+    <div class="row" align="center">
+        <div class="col-sm-3">
+            <span>Sell Amount</span>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-6">
+            <span>Buy Amount</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <input class="form-control" type="text" ng-model="vm.sellAmount" ng-change="vm.changeSellAmount()">
+        </div>
+        <div class="col-sm-3 col-sm-offset-6">
+            <input class="form-control" type="text" ng-model="vm.buyAmount" readonly>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+            <button class="form-control btn btn-primary" ng-click="vm.createTrade()" >Create</button>
+        </div>
+        <div class="col-sm-1 col-sm-offset-10">
+            <a class="form-control btn btn-primary" href="#/trades">Cancel</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="page-header">
+    <h2>Booked Trades</h2>
+</div>
+
+<div class="row">
+    <div class="col-sm-2 col-sm-offset-10">
+        <a class="form-control btn btn-primary" href="#/new-trade">New Trade</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="container">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Sell CCY</th>
+                    <th>Sell Amount</th>
+                    <th>Buy CCY</th>
+                    <th>Buy Amount</th>
+                    <th>Rate</th>
+                    <th>Date Booked</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="trade in vm.trades">
+                    <td>{{ trade.sell_currency }}</td>
+                    <td>{{ trade.sell_amount }}</td>
+                    <td>{{ trade.buy_currency }}</td>
+                    <td>{{ trade.buy_amount | number:2 }}</td>
+                    <td>{{ trade.rate }}</td>
+                    <td>{{ trade.date_booked | date:'dd/MM/yyyy HH:MM' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
