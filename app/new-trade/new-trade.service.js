@@ -46,8 +46,8 @@ function fixerservice($http) {
             buy_currency: buy_currency,
             rate: rate
         };
-        console.log("sadasd")
-        return $http.post('http://127.0.0.1:8008/api/1.0/trades/', data)
+
+        return $http.post('/api/1.0/trades/', data)
             .then(postTradeComplete)
             .catch(postTradeFailed);
 

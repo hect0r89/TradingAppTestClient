@@ -10,7 +10,7 @@ function tradeservice($http) {
     };
 
     function getTrades() {
-        return $http.get('http://127.0.0.1:8008/api/1.0/trades/')
+        return $http.get('/api/1.0/trades/')
             .then(getTradesComplete)
             .catch(getTradesFailed);
 
